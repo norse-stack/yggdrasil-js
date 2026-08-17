@@ -1,0 +1,59 @@
+/* =================================================================================== */
+/* DISPLAY UI ELEMENTS */
+/* Pure display components for showing data */
+/* =================================================================================== */
+
+/* =================================================================================== */
+/* STAT CHIP */
+/* Labeled statistic display with optional icon */
+/* =================================================================================== */
+
+.stat-chip {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.stat-chip__label {
+    font-size: 10px;
+    color: var(--color-text-subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.stat-chip__icon {
+    font-size: 11px;
+}
+
+.stat-chip__value {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* =================================================================================== */
+/* BADGE */
+/* Small label for status/tags */
+/* =================================================================================== */
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.badge--solid {
+    /* Styles applied via inline style prop */
+}
+
+.badge--outline {
+    background: transparent;
+}
+
+.badge--subtle {
+    /* Styles applied via inline style prop */
+}

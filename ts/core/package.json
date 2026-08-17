@@ -1,0 +1,96 @@
+{
+  "name": "yggdrasil-js",
+  "version": "0.1.0",
+  "description": "Frontend framework for intelligent applications",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./munin": {
+      "import": "./dist/munin/index.js",
+      "types": "./dist/munin/index.d.ts"
+    },
+    "./state": {
+      "import": "./dist/state/index.js",
+      "types": "./dist/state/index.d.ts"
+    },
+    "./tiling": {
+      "import": "./dist/tiling/index.js",
+      "types": "./dist/tiling/index.d.ts"
+    },
+    "./rendering": {
+      "import": "./dist/rendering/index.js",
+      "types": "./dist/rendering/index.d.ts"
+    },
+    "./theme": {
+      "import": "./dist/theme/index.js",
+      "types": "./dist/theme/index.d.ts"
+    },
+    "./hugin": {
+      "import": "./dist/hugin/index.js",
+      "types": "./dist/hugin/index.d.ts"
+    },
+    "./adapters": {
+      "import": "./dist/adapters/index.js",
+      "types": "./dist/adapters/index.d.ts"
+    },
+    "./flow": {
+      "import": "./dist/flow/index.js",
+      "types": "./dist/flow/index.d.ts"
+    },
+    "./services": {
+      "import": "./dist/services/index.js",
+      "types": "./dist/services/index.d.ts"
+    },
+    "./dependencies": {
+      "import": "./dist/dependencies/index.js",
+      "types": "./dist/dependencies/index.d.ts"
+    },
+    "./types": {
+      "import": "./dist/types.js",
+      "types": "./dist/types.d.ts"
+    },
+    "./ssr": {
+      "import": "./dist/ssr.js",
+      "types": "./dist/ssr.d.ts"
+    },
+    "./styles/*": "./styles/*"
+  },
+  "files": [
+    "dist",
+    "src",
+    "styles"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "jsdom": "^27.0.1",
+    "typescript": "~5.8.3",
+    "vitest": "^3.2.4"
+  },
+  "author": "Amplify Technology",
+  "license": "(MIT OR Apache-2.0)",
+  "keywords": [
+    "frontend",
+    "framework",
+    "typescript",
+    "tiles",
+    "state-management",
+    "yggdrasil"
+  ],
+  "homepage": "https://yggdrasil-js.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/norse-stack/yggdrasil-js"
+  }
+}

@@ -1,0 +1,55 @@
+/* =================================================================================== */
+/* FORM INPUTS - Framework-provided form elements                                      */
+/* Layer: ygg.forms                                                                    */
+/* Why framework? Forms are HARD - accessibility, validation, focus states            */
+/* =================================================================================== */
+
+@layer ygg.forms {
+  /* =================================================================================
+     TEXT INPUT
+     ================================================================================= */
+  .tile-input {
+    height: var(--input-height);
+    padding: 0 var(--spacing-sm);
+    border: 1px solid var(--color-input-border);
+    border-radius: var(--border-radius);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-size: 0.9em;
+    font-family: inherit;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .tile-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-primary) 20%, transparent);
+  }
+
+  .tile-input[type="number"] {
+    text-align: center;
+    width: 70px;
+  }
+
+  /* =================================================================================
+     SELECT DROPDOWN
+     ================================================================================= */
+  .tile-select {
+    height: var(--input-height);
+    padding: 0 var(--spacing-sm);
+    border: 1px solid var(--color-input-border);
+    border-radius: var(--border-radius);
+    background-color: var(--color-button-bg);
+    color: var(--color-text);
+    font-size: 0.9em;
+    font-family: inherit;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+  }
+
+  .tile-select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-primary) 20%, transparent);
+  }
+}

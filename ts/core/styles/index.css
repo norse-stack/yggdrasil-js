@@ -1,0 +1,56 @@
+/* =================================================================================== */
+/* YGGDRASIL STYLES - Complete Styling System                                         */
+/* =================================================================================== */
+/*
+ * CSS-Component Mirroring Convention:
+ * - yggdrasil/  = Framework styles (hard things: forms, reset, theme, tiles base)
+ *
+ * See: docs/02-architecture/01-systems/11-css-component-mirroring.md
+ */
+
+/* =================================================================================== */
+/* LAYER ORDER DECLARATION - This MUST come first!                                    */
+/* Later layers have higher priority in the cascade.                                  */
+/* =================================================================================== */
+@layer
+  ygg.reset,           /* Browser normalization */
+  ygg.theme,           /* CSS variables only */
+  ygg.forms,           /* Form inputs, selects (hard things) */
+  ygg.tiles.base,      /* Base tile structure & Munin layers */
+  ygg.ui.states,       /* Loading, error, empty states */
+  ygg.ui.container,    /* Container query adaptations */
+  app.ui,              /* App's branded UI (buttons, etc.) */
+  app.tiles,           /* Tile-specific styles */
+  app.components;      /* App-level components */
+
+/* =================================================================================== */
+/* YGGDRASIL FRAMEWORK - Reusable across any Yapp                                     */
+/* Provides: Hard things (forms, reset, theme, tile infrastructure)                   */
+/* =================================================================================== */
+
+/* 1. Reset - Browser normalization */
+@import url("./yggdrasil/reset.css");                        /* ygg.reset */
+
+/* 2. Theme System - CSS variables, theme switching via data-theme */
+@import url("./yggdrasil/themes/theme.css");                 /* ygg.theme */
+
+/* 3. Forms - The hard stuff (accessibility, validation, focus) */
+@import url("./yggdrasil/forms/inputs.css");                 /* ygg.forms */
+
+/* 4. Tile Infrastructure - Munin layers & tiling system */
+@import url("./yggdrasil/tiles/_base.css");                  /* ygg.tiles.base */
+@import url("./yggdrasil/tiles/tiling.css");                 /* ygg.tiles.base */
+
+/* 5. UI States - Loading, error, empty */
+@import url("./yggdrasil/ui/states.css");                    /* ygg.ui.states */
+
+/* 6. UI Utilities */
+@import url("./yggdrasil/ui/spinner.css");                   /* ygg.ui.states */
+@import url("./yggdrasil/ui/display.css");                   /* ygg.ui.states */
+@import url("./yggdrasil/ui/controls.css");                  /* ygg.ui.states */
+@import url("./yggdrasil/ui/container-queries.css");         /* ygg.ui.container */
+
+/* =================================================================================== */
+/* DEBUG (unlayered - highest priority for dev tools)                                 */
+/* =================================================================================== */
+@import url("./yggdrasil/debug/layers.css");

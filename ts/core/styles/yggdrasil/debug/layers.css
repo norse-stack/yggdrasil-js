@@ -1,0 +1,193 @@
+/* =================================================================================== */
+/* ENHANCED DEBUG LAYER VISUALIZATION - Advanced Stacking Analysis */
+/* =================================================================================== */
+
+/* Add this class to document.body via console to enable debug mode:
+   document.body.classList.add('munin-debug-layers')
+*/
+
+.munin-debug-layers .munin-layered-container {
+  /* Strong container outline to clearly show boundaries */
+  border: 3px dashed rgba(255, 0, 255, 0.8) !important;
+  background: rgba(255, 0, 255, 0.02) !important;
+}
+
+/* BASE LAYER STYLING WITH Z-AXIS PADDING */
+.munin-debug-layers .munin-layer {
+  /* Base styling for all layers with stronger visibility */
+  border: 2px solid rgba(255, 0, 0, 0.8) !important;
+  background: rgba(255, 0, 0, 0.08) !important;
+  /* Z-axis based padding - default (z-index 0) gets 4px */
+  margin: 4px !important;
+}
+
+/* BACKGROUND LAYER (z-index: 1) - Green, Left position */
+.munin-debug-layers .munin-layer-background {
+  border-color: rgba(0, 255, 0, 0.9) !important;
+  background: rgba(0, 255, 0, 0.06) !important;
+  /* Higher z-index = more padding */
+  margin: 8px !important;
+}
+
+/* CONTROLS LAYER (z-index: 2) - Blue, Center position */
+.munin-debug-layers .munin-layer-controls {
+  border-color: rgba(0, 100, 255, 0.9) !important;
+  background: rgba(0, 100, 255, 0.08) !important;
+  /* Even higher z-index = even more padding */
+  margin: 12px !important;
+}
+
+/* OVERLAY LAYER (z-index: 3) - Orange, Right position */
+.munin-debug-layers .munin-layer-overlay {
+  border-color: rgba(255, 140, 0, 0.9) !important;
+  background: rgba(255, 140, 0, 0.12) !important;
+  /* Highest z-index = most padding */
+  margin: 16px !important;
+}
+
+/* DISTRIBUTED LAYER NAME TAGS - Spread across top edge */
+.munin-debug-layers .munin-layer-background::before {
+  content: "🟢 BACKGROUND (z:" attr(data-z-index) ")";
+  position: absolute;
+  top: -2px;
+  left: 8px; /* Left side for background */
+  background: rgba(0, 200, 0, 0.95);
+  color: white;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 3px 6px;
+  border-radius: 3px;
+  z-index: 9999;
+  pointer-events: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.munin-debug-layers .munin-layer-controls::before {
+  content: "🔵 CONTROLS (z:" attr(data-z-index) ")";
+  position: absolute;
+  top: -2px;
+  left: 50%;
+  transform: translateX(-50%); /* Center for controls */
+  background: rgba(0, 100, 255, 0.95);
+  color: white;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 3px 6px;
+  border-radius: 3px;
+  z-index: 9999;
+  pointer-events: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.munin-debug-layers .munin-layer-overlay::before {
+  content: "🟠 OVERLAY (z:" attr(data-z-index) ")";
+  position: absolute;
+  top: -2px;
+  right: 8px; /* Right side for overlay */
+  background: rgba(255, 140, 0, 0.95);
+  color: white;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 3px 6px;
+  border-radius: 3px;
+  z-index: 9999;
+  pointer-events: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* GENERIC LAYER TAG - for future layers, positioned dynamically */
+.munin-debug-layers .munin-layer:not(.munin-layer-background):not(.munin-layer-controls):not(.munin-layer-overlay)::before {
+  content: "⚫ LAYER (z:" attr(data-z-index) ")";
+  position: absolute;
+  top: -2px;
+  left: 30%; /* Offset position for generic layers */
+  background: rgba(100, 100, 100, 0.95);
+  color: white;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 3px 6px;
+  border-radius: 3px;
+  z-index: 9999;
+  pointer-events: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* POINTER EVENTS STATUS INDICATORS */
+.munin-debug-layers .munin-layer-controls::after {
+  content: "🎮 HUD MODE (click-through + selective interaction)";
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  background: rgba(0, 100, 255, 0.95);
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 2px 5px;
+  border-radius: 3px;
+  z-index: 9999;
+  pointer-events: none;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+}
+
+.munin-debug-layers .munin-layer-background::after {
+  content: "👆 INTERACTIVE BACKGROUND";
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  background: rgba(50, 255, 50, 0.95);
+  color: black;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 2px 5px;
+  border-radius: 3px;
+  z-index: 9999;
+  pointer-events: none;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+}
+
+.munin-debug-layers .munin-layer-overlay::after {
+  content: "🔒 OVERLAY BLOCKS";
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  background: rgba(255, 140, 0, 0.95);
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 2px 5px;
+  border-radius: 3px;
+  z-index: 9999;
+  pointer-events: none;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+}
+
+/* Show interactive elements within HUD */
+.munin-debug-layers .munin-layer-controls button,
+.munin-debug-layers .munin-layer-controls .interactive,
+.munin-debug-layers .munin-layer-controls .clickable,
+.munin-debug-layers .munin-layer-controls input,
+.munin-debug-layers .munin-layer-controls select,
+.munin-debug-layers .munin-layer-controls textarea,
+.munin-debug-layers .munin-layer-controls a,
+.munin-debug-layers .munin-layer-controls [role="button"],
+.munin-debug-layers .munin-layer-controls .control-element {
+  outline: 2px solid rgba(0, 255, 255, 0.8) !important;
+  box-shadow: 0 0 0 4px rgba(0, 255, 255, 0.2) !important;
+}
+
+/* CONTAINER BOUNDARY LABELS */
+.munin-debug-layers .munin-layered-container::before {
+  content: "📦 MUNIN CONTAINER";
+  position: absolute;
+  top: -20px;
+  left: 0;
+  background: rgba(255, 0, 255, 0.95);
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 4px;
+  z-index: 10000;
+  pointer-events: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}

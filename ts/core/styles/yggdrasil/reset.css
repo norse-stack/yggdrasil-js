@@ -1,0 +1,69 @@
+/* =================================================================================== */
+/* GLOBAL FOUNDATION - System Reset & Base Styles                                     */
+/* Layer: ygg.reset                                                                   */
+/* =================================================================================== */
+
+@layer ygg.reset {
+  :root {
+    /* Typography System */
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+
+    /* Rendering Optimization */
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Color Scheme Detection */
+    color-scheme: light dark;
+  }
+
+  /* Box Sizing Reset */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  /* Base Body Reset */
+  body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+  }
+
+  /* App Container */
+  #app {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Default Link Styles */
+  a {
+    font-weight: 500;
+    color: var(--color-primary);
+    text-decoration: inherit;
+  }
+
+  a:hover {
+    color: var(--color-primary-hover);
+  }
+
+  /* Base Typography */
+  h1 {
+    font-size: 2em;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+
+  /* Focus Ring Styles */
+  *:focus,
+  *:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+}

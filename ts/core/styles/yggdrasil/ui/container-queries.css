@@ -1,0 +1,101 @@
+/* =================================================================================== */
+/* CONTAINER QUERIES - Responsive Tile Behaviors                                      */
+/* Layer: ygg.ui.container                                                            */
+/* =================================================================================== */
+
+@layer ygg.ui.container {
+  /* NARROW TILE: Compact layout for tiles < 400px wide */
+  @container tile (max-width: 400px) {
+    .btn {
+      font-size: 0.8em;
+      padding: 0 var(--spacing-sm);
+      height: 28px;
+    }
+
+    .tile-input {
+      font-size: 0.8em;
+      height: 28px;
+      width: 50px;
+    }
+
+    .tile-input[type="number"] {
+      width: 50px;
+      text-align: center;
+    }
+  }
+
+  /* WIDE TILE: Spacious layout for tiles > 600px wide */
+  @container tile (min-width: 600px) {
+    .btn {
+      padding: 0 var(--spacing-xl);
+      font-size: 1em;
+    }
+
+    .tile-input {
+      font-size: 1em;
+    }
+
+    .tile-input[type="number"] {
+      width: 80px;
+    }
+  }
+
+  /* SHORT TILE: Minimize vertical space for tiles < 300px tall */
+  @container tile (max-height: 300px) {
+    .btn {
+      height: 28px;
+      font-size: 0.8em;
+      padding: 0 var(--spacing-sm);
+    }
+
+    .tile-input {
+      height: 28px;
+      font-size: 0.8em;
+      padding: 0 var(--spacing-xs);
+    }
+
+    .tile-loading,
+    .tile-empty,
+    .tile-error {
+      padding: var(--spacing-lg);
+      font-size: 0.9em;
+    }
+
+    .tile-empty h4,
+    .tile-error h4 {
+      font-size: 1em;
+    }
+  }
+
+  /* VERY WIDE TILE: Enhanced layout for tiles > 800px wide */
+  @container tile (min-width: 800px) {
+    .btn {
+      padding: var(--spacing-lg) var(--spacing-2xl);
+      font-size: 1.1em;
+      border-radius: var(--border-radius-lg);
+    }
+
+    .tile-input {
+      font-size: 1.1em;
+      padding: 0 var(--spacing-md);
+    }
+
+    .tile-input[type="number"] {
+      width: 100px;
+      padding: var(--spacing-sm);
+      border-radius: 6px;
+    }
+
+    .tile-loading,
+    .tile-empty,
+    .tile-error {
+      padding: var(--spacing-2xl);
+      font-size: 1.1em;
+    }
+
+    .tile-empty h4,
+    .tile-error h4 {
+      font-size: 1.5em;
+    }
+  }
+}

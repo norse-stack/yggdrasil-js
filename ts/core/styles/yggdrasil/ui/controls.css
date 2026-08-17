@@ -1,0 +1,293 @@
+/* =================================================================================== */
+/* CONTROL UI ELEMENTS */
+/* Interactive control components */
+/* =================================================================================== */
+
+/* =================================================================================== */
+/* VIEW TOGGLE */
+/* Button group for switching between view modes */
+/* =================================================================================== */
+
+.view-toggle {
+    display: flex;
+    align-items: center;
+    padding: 3px;
+    background: var(--color-bg-elevated);
+    border-radius: 6px;
+    border: 1px solid var(--color-border-muted);
+}
+
+.view-toggle__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 6px 16px;
+    background: transparent;
+    border: none;
+    border-radius: 4px;
+    color: var(--color-text-subtle);
+    font-size: 12px;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.view-toggle__btn:hover:not(:disabled) {
+    color: var(--color-text-muted);
+}
+
+.view-toggle__btn--active {
+    background: var(--color-bg-active);
+    color: var(--color-text);
+}
+
+.view-toggle__btn--active:hover:not(:disabled) {
+    background: var(--color-bg-selected);
+    color: var(--color-text);
+}
+
+.view-toggle__icon {
+    font-size: 12px;
+}
+
+.view-toggle__label {
+    font-size: 12px;
+}
+
+/* =================================================================================== */
+/* SEGMENTED CONTROL (Generic) */
+/* Reusable segmented button group */
+/* =================================================================================== */
+
+.segmented-control {
+    display: flex;
+    align-items: center;
+    gap: 1px;
+    padding: 2px;
+    background: var(--btn-icon-bg);
+    border-radius: 6px;
+    border: 1px solid var(--color-border-default);
+}
+
+.segmented-control__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: transparent;
+    border: none;
+    border-radius: 4px;
+    color: var(--color-text-dimmed);
+    font-size: 12px;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.segmented-control__btn:hover:not(:disabled) {
+    background: var(--color-bg-hover);
+    color: var(--color-text-muted);
+}
+
+.segmented-control__btn--active {
+    background: var(--color-bg-selected);
+    color: var(--color-text);
+}
+
+.segmented-control__btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* =================================================================================== */
+/* PDF DROPDOWN */
+/* Dropdown for selecting between uploaded PDFs */
+/* =================================================================================== */
+
+.pdf-dropdown {
+    position: relative;
+    display: inline-flex;
+}
+
+.pdf-dropdown__trigger {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    background: var(--btn-icon-bg);
+    border: 1px solid var(--color-border-default);
+    border-radius: 6px;
+    color: var(--color-text-muted);
+    font-size: 12px;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    min-width: 140px;
+    max-width: 280px;
+}
+
+.pdf-dropdown__trigger:hover {
+    background: var(--color-bg-hover);
+    border-color: var(--color-border-hover);
+}
+
+.pdf-dropdown--open .pdf-dropdown__trigger {
+    background: var(--color-bg-active);
+    border-color: var(--color-primary);
+}
+
+.pdf-dropdown__icon {
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.pdf-dropdown__filename {
+    flex: 1;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--color-text-secondary);
+}
+
+.pdf-dropdown__pages {
+    font-size: 10px;
+    color: var(--color-text-subtle);
+    flex-shrink: 0;
+}
+
+.pdf-dropdown__arrow {
+    font-size: 10px;
+    color: var(--color-text-subtle);
+    flex-shrink: 0;
+    transition: transform 0.15s ease;
+}
+
+.pdf-dropdown--open .pdf-dropdown__arrow {
+    transform: rotate(180deg);
+}
+
+/* Dropdown Menu */
+.pdf-dropdown__menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    min-width: 200px;
+    max-width: 320px;
+    max-height: 280px;
+    overflow-y: auto;
+    background: var(--color-bg-dropdown);
+    border: 1px solid var(--color-border-default);
+    border-radius: 8px;
+    box-shadow: var(--shadow-xl);
+    z-index: 100;
+    animation: pdf-dropdown-appear 0.15s ease;
+}
+
+@keyframes pdf-dropdown-appear {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.pdf-dropdown__empty {
+    padding: 16px;
+    text-align: center;
+    color: var(--color-text-subtle);
+    font-size: 12px;
+    font-style: italic;
+}
+
+/* Dropdown Item */
+.pdf-dropdown__item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.pdf-dropdown__item:last-child {
+    border-bottom: none;
+}
+
+.pdf-dropdown__item--selected {
+    background: var(--btn-accent-orange-bg);
+}
+
+.pdf-dropdown__item-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    padding: 10px 12px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: background 0.1s ease;
+    text-align: left;
+}
+
+.pdf-dropdown__item-main:hover {
+    background: var(--btn-icon-bg);
+}
+
+.pdf-dropdown__item--selected .pdf-dropdown__item-main:hover {
+    background: var(--btn-accent-orange-hover-bg);
+}
+
+.pdf-dropdown__item-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+}
+
+.pdf-dropdown__item--selected .pdf-dropdown__item-name {
+    color: var(--color-primary-hover);
+}
+
+.pdf-dropdown__item-pages {
+    font-size: 11px;
+    color: var(--color-text-subtle);
+}
+
+.pdf-dropdown__item-delete {
+    width: 32px;
+    height: 100%;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    border-left: 1px solid var(--color-border-subtle);
+    color: var(--color-text-subtle);
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.1s ease;
+}
+
+.pdf-dropdown__item-delete:hover {
+    background: var(--btn-danger-bg);
+    color: var(--color-danger-light);
+}
+
+/* PDF Tile Dropdown Container */
+.pdf-tile-dropdown-container {
+    display: flex;
+    align-items: center;
+}

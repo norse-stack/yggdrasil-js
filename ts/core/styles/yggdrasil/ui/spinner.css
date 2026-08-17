@@ -1,0 +1,109 @@
+/* =================================================================================== */
+/* UI COMPONENT: Spinner - Reusable loading spinner */
+/* =================================================================================== */
+
+.ui-spinner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.ui-spinner-container--small {
+  gap: var(--spacing-sm);
+}
+
+.ui-spinner-container--large {
+  gap: var(--spacing-lg);
+}
+
+.ui-spinner {
+  position: relative;
+}
+
+/* Size variants */
+.ui-spinner-container--small .ui-spinner {
+  width: 40px;
+  height: 40px;
+}
+
+.ui-spinner-container--medium .ui-spinner {
+  width: 60px;
+  height: 60px;
+}
+
+.ui-spinner-container--large .ui-spinner {
+  width: 80px;
+  height: 80px;
+}
+
+.ui-spinner-ring {
+  position: absolute;
+  inset: 0;
+  border: 3px solid transparent;
+  border-radius: 50%;
+  animation: ui-spin 1.5s linear infinite;
+}
+
+.ui-spinner-ring:nth-child(1) {
+  border-top-color: var(--color-primary);
+  animation-delay: 0s;
+}
+
+.ui-spinner-ring:nth-child(2) {
+  border-right-color: var(--color-secondary);
+  animation-delay: -0.5s;
+  transform: scale(0.8);
+}
+
+.ui-spinner-ring:nth-child(3) {
+  border-bottom-color: var(--color-primary);
+  animation-delay: -1s;
+  transform: scale(0.6);
+}
+
+@keyframes ui-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Fix rotation for scaled rings */
+.ui-spinner-ring:nth-child(2) {
+  animation-name: ui-spin-scaled-8;
+}
+
+.ui-spinner-ring:nth-child(3) {
+  animation-name: ui-spin-scaled-6;
+}
+
+@keyframes ui-spin-scaled-8 {
+  0% {
+    transform: rotate(0deg) scale(0.8);
+  }
+  100% {
+    transform: rotate(360deg) scale(0.8);
+  }
+}
+
+@keyframes ui-spin-scaled-6 {
+  0% {
+    transform: rotate(0deg) scale(0.6);
+  }
+  100% {
+    transform: rotate(360deg) scale(0.6);
+  }
+}
+
+.ui-spinner-text {
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.ui-spinner-text p {
+  margin: 0;
+  font-size: 0.9em;
+}

@@ -1,0 +1,367 @@
+/* =================================================================================== */
+/* RUNTIME THEME SYSTEM - CSS Custom Properties                                       */
+/* Layer: ygg.theme                                                                   */
+/* =================================================================================== */
+
+@layer ygg.theme {
+  :root {
+    /* =========================================================================
+       GRAY SCALE - Zinc palette for neutral tones
+       These form the backbone of the UI - text, borders, backgrounds
+       ========================================================================= */
+    --gray-50: #fafafa;
+    --gray-100: #f4f4f5;
+    --gray-200: #e4e4e7;
+    --gray-300: #d4d4d8;
+    --gray-400: #a1a1aa;
+    --gray-500: #71717a;
+    --gray-600: #52525b;
+    --gray-700: #3f3f46;
+    --gray-800: #27272a;
+    --gray-900: #18181b;
+    --gray-950: #09090b;
+
+    /* =========================================================================
+       BRAND COLORS - Primary palette
+       ========================================================================= */
+    --color-primary: #f97316;
+    --color-primary-dark: #ea580c;
+    --color-primary-hover: #fb923c;
+
+    /* =========================================================================
+       SEMANTIC COLORS - Functional meaning
+       ========================================================================= */
+    --color-success: #22c55e;
+    --color-success-dark: #16a34a;
+    --color-danger: #ef4444;
+    --color-danger-dark: #dc2626;
+    --color-danger-light: #f87171;
+    --color-warning: #f59e0b;
+    --color-info: #3b82f6;
+    --color-info-light: #60a5fa;
+
+    /* Accent colors for features */
+    --color-accent-purple: #8b5cf6;
+    --color-accent-purple-light: #a78bfa;
+
+    /* =========================================================================
+       GRADIENTS
+       ========================================================================= */
+    --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    --gradient-avatar: linear-gradient(135deg, #6366f1 0%, var(--color-accent-purple) 100%);
+
+    /* =========================================================================
+       TEXT COLORS - Semantic text hierarchy
+       ========================================================================= */
+    --color-text: var(--gray-50);
+    --color-text-secondary: var(--gray-200);
+    --color-text-muted: var(--gray-400);
+    --color-text-dimmed: var(--gray-500);
+    --color-text-subtle: var(--gray-600);
+    --color-text-inverse: var(--gray-950);
+
+    /* =========================================================================
+       BACKGROUND COLORS - Surface hierarchy
+       Dark theme: near-black base with subtle elevation
+       ========================================================================= */
+    --color-bg: var(--gray-950);
+    --color-bg-secondary: rgba(255, 255, 255, 0.02);
+    --color-bg-tertiary: rgba(255, 255, 255, 0.04);
+    --color-bg-elevated: rgba(255, 255, 255, 0.03);
+    --color-bg-hover: rgba(255, 255, 255, 0.06);
+    --color-bg-active: rgba(255, 255, 255, 0.08);
+    --color-bg-selected: rgba(255, 255, 255, 0.1);
+    --color-bg-overlay: rgba(0, 0, 0, 0.85);
+    --color-bg-overlay-light: rgba(0, 0, 0, 0.7);
+    --color-bg-dropdown: rgba(9, 9, 11, 0.98);
+    --color-bg-glass: rgba(0, 0, 0, 0.5);
+
+    /* =========================================================================
+       BORDER COLORS - Edge definition
+       ========================================================================= */
+    --color-border: var(--gray-700);
+    --color-border-subtle: rgba(255, 255, 255, 0.04);
+    --color-border-muted: rgba(255, 255, 255, 0.06);
+    --color-border-default: rgba(255, 255, 255, 0.08);
+    --color-border-hover: rgba(255, 255, 255, 0.15);
+
+    /* =========================================================================
+       SHADOW SYSTEM
+       ========================================================================= */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --shadow-xl: 0 10px 40px rgba(0, 0, 0, 0.5);
+    --shadow-primary: 0 2px 12px rgba(249, 115, 22, 0.25);
+    --shadow-primary-hover: 0 4px 16px rgba(249, 115, 22, 0.35);
+    --shadow-primary-glow: 0 0 20px rgba(249, 115, 22, 0.3);
+
+    /* =========================================================================
+       BUTTON COLOR SYSTEM
+       ========================================================================= */
+    --btn-primary-bg: var(--gradient-primary);
+    --btn-primary-text: white;
+    --btn-primary-shadow: var(--shadow-primary);
+
+    --btn-secondary-bg: var(--color-bg-hover);
+    --btn-secondary-border: var(--color-border-default);
+    --btn-secondary-text: var(--gray-200);
+    --btn-secondary-hover: var(--color-bg-active);
+
+    --btn-ghost-bg: transparent;
+    --btn-ghost-border: var(--color-border-default);
+    --btn-ghost-text: var(--gray-500);
+
+    --btn-danger-bg: rgba(239, 68, 68, 0.12);
+    --btn-danger-border: rgba(239, 68, 68, 0.25);
+    --btn-danger-text: var(--color-danger);
+    --btn-danger-hover-bg: rgba(239, 68, 68, 0.2);
+    --btn-danger-hover-border: rgba(239, 68, 68, 0.4);
+
+    --btn-accent-green-bg: rgba(34, 197, 94, 0.08);
+    --btn-accent-green-border: rgba(34, 197, 94, 0.2);
+    --btn-accent-green-text: var(--color-success);
+    --btn-accent-green-hover-bg: rgba(34, 197, 94, 0.15);
+    --btn-accent-green-hover-border: rgba(34, 197, 94, 0.35);
+
+    --btn-accent-blue-bg: rgba(59, 130, 246, 0.12);
+    --btn-accent-blue-border: rgba(59, 130, 246, 0.25);
+    --btn-accent-blue-text: var(--color-info-light);
+    --btn-accent-blue-hover-bg: rgba(59, 130, 246, 0.2);
+    --btn-accent-blue-hover-border: rgba(59, 130, 246, 0.4);
+
+    --btn-accent-orange-bg: rgba(249, 115, 22, 0.08);
+    --btn-accent-orange-border: rgba(249, 115, 22, 0.2);
+    --btn-accent-orange-text: var(--color-primary);
+    --btn-accent-orange-hover-bg: rgba(249, 115, 22, 0.15);
+    --btn-accent-orange-hover-border: rgba(249, 115, 22, 0.35);
+    --btn-accent-orange-active-bg: rgba(249, 115, 22, 0.2);
+    --btn-accent-orange-active-border: rgba(249, 115, 22, 0.4);
+    --btn-accent-orange-glow: 0 0 12px rgba(249, 115, 22, 0.25);
+
+    --btn-icon-bg: rgba(255, 255, 255, 0.04);
+    --btn-icon-border: var(--color-border-default);
+    --btn-icon-text: var(--gray-500);
+
+    /* =========================================================================
+       COMPONENT COLORS
+       ========================================================================= */
+    --color-button-bg: var(--gray-950);
+    --color-input-border: rgba(255, 255, 255, 0.3);
+
+    /* =========================================================================
+       PDF CANVAS - Reduce harsh white contrast in dark mode
+       ========================================================================= */
+    --pdf-canvas-filter: brightness(0.88) sepia(0.06);
+    --pdf-canvas-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
+    --pdf-page-bg: #f8f6f1;  /* Warm cream off-white */
+    --pdf-bg: #1f1f23;  /* Neutral dark gray - less brown, slightly lighter */
+
+    /* =========================================================================
+       GRAPH CANVAS - Warm tint for dark mode
+       ========================================================================= */
+    --graph-bg: #1f1f23;  /* Neutral dark gray - less brown, slightly lighter */
+
+    /* =========================================================================
+       TILES AREA - Background behind/between tiles during transitions
+       ========================================================================= */
+    --color-bg-tiles-area: #1f1f23;  /* Match tile backgrounds for seamless transitions */
+
+    /* =========================================================================
+       SPACING SYSTEM
+       ========================================================================= */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 0.75rem;
+    --spacing-lg: 1rem;
+    --spacing-xl: 1.5rem;
+    --spacing-2xl: 2rem;
+
+    /* =========================================================================
+       COMPONENT SIZING
+       ========================================================================= */
+    --button-height: 36px;
+    --input-height: 36px;
+    --border-radius: 4px;
+    --border-radius-lg: 8px;
+
+    /* =========================================================================
+       Z-INDEX SYSTEM
+       ========================================================================= */
+    --z-controls: 50;
+    --z-overlay: 100;
+    --z-modal: 1000;
+
+    /* =========================================================================
+       SEMANTIC STATE COLORS
+       Use these for UI states that need consistent meaning across themes
+       ========================================================================= */
+
+    /* Action states */
+    --color-state-frozen: var(--color-info);
+    --color-state-frozen-subtle: rgba(59, 130, 246, 0.15);
+    --color-state-frozen-border: rgba(59, 130, 246, 0.3);
+    --color-state-frozen-hover: rgba(59, 130, 246, 0.25);
+    --color-state-frozen-hover-border: rgba(59, 130, 246, 0.4);
+
+    --color-state-active: var(--color-success);
+    --color-state-active-subtle: rgba(34, 197, 94, 0.15);
+    --color-state-active-border: rgba(34, 197, 94, 0.3);
+    --color-state-active-hover: rgba(34, 197, 94, 0.25);
+    --color-state-active-hover-border: rgba(34, 197, 94, 0.4);
+
+    /* Layout mode colors */
+    --color-mode-hierarchical: var(--color-accent-purple);
+    --color-mode-hierarchical-subtle: rgba(139, 92, 246, 0.2);
+    --color-mode-hierarchical-hover: rgba(139, 92, 246, 0.25);
+
+    --color-mode-force: var(--color-info);
+    --color-mode-force-subtle: rgba(59, 130, 246, 0.2);
+    --color-mode-force-hover: rgba(59, 130, 246, 0.25);
+  }
+
+  /* Dark Theme Adjustments (already default) */
+  [data-theme="dark"] {
+    --color-text: var(--gray-50);
+    --color-bg: var(--gray-950);
+  }
+
+  /* Light Theme */
+  [data-theme="light"] {
+    /* Gray scale inverts for light theme */
+    --color-text: var(--gray-900);
+    --color-text-secondary: var(--gray-700);
+    --color-text-muted: var(--gray-500);
+    --color-text-dimmed: var(--gray-400);
+    --color-text-subtle: var(--gray-400);
+
+    --color-bg: white;
+    --color-bg-secondary: var(--gray-100);
+    --color-bg-tertiary: var(--gray-100);
+    --color-bg-elevated: white;
+    --color-bg-hover: rgba(0, 0, 0, 0.04);
+    --color-bg-active: rgba(0, 0, 0, 0.06);
+    --color-bg-overlay: rgba(0, 0, 0, 0.5);
+    --color-bg-dropdown: rgba(255, 255, 255, 0.98);
+
+    --color-border: var(--gray-200);
+    --color-border-subtle: var(--gray-100);
+    --color-border-muted: var(--gray-200);
+    --color-border-default: var(--gray-200);
+    --color-border-hover: var(--gray-300);
+
+    --color-button-bg: var(--gray-100);
+    --color-input-border: rgba(0, 0, 0, 0.3);
+
+    /* Button adjustments for light */
+    --btn-secondary-bg: rgba(0, 0, 0, 0.04);
+    --btn-secondary-border: var(--gray-200);
+    --btn-secondary-text: var(--gray-700);
+    --btn-secondary-hover: rgba(0, 0, 0, 0.06);
+
+    --btn-ghost-text: var(--gray-500);
+    --btn-danger-bg: rgba(239, 68, 68, 0.08);
+    --btn-danger-border: rgba(239, 68, 68, 0.2);
+    --btn-danger-text: #dc2626;
+    --btn-danger-hover-bg: rgba(239, 68, 68, 0.15);
+    --btn-danger-hover-border: rgba(239, 68, 68, 0.3);
+
+    --btn-accent-green-bg: rgba(34, 197, 94, 0.06);
+    --btn-accent-green-border: rgba(34, 197, 94, 0.15);
+    --btn-accent-green-text: #16a34a;
+    --btn-accent-green-hover-bg: rgba(34, 197, 94, 0.12);
+    --btn-accent-green-hover-border: rgba(34, 197, 94, 0.25);
+
+    --btn-accent-blue-bg: rgba(59, 130, 246, 0.08);
+    --btn-accent-blue-border: rgba(59, 130, 246, 0.2);
+    --btn-accent-blue-text: #2563eb;
+    --btn-accent-blue-hover-bg: rgba(59, 130, 246, 0.15);
+    --btn-accent-blue-hover-border: rgba(59, 130, 246, 0.3);
+
+    --btn-accent-orange-bg: rgba(249, 115, 22, 0.06);
+    --btn-accent-orange-border: rgba(249, 115, 22, 0.15);
+    --btn-accent-orange-text: #ea580c;
+    --btn-accent-orange-hover-bg: rgba(249, 115, 22, 0.12);
+    --btn-accent-orange-hover-border: rgba(249, 115, 22, 0.25);
+    --btn-accent-orange-active-bg: rgba(249, 115, 22, 0.18);
+    --btn-accent-orange-active-border: rgba(249, 115, 22, 0.3);
+    --btn-accent-orange-glow: 0 0 12px rgba(249, 115, 22, 0.15);
+
+    --btn-icon-bg: rgba(0, 0, 0, 0.04);
+    --btn-icon-border: var(--gray-200);
+    --btn-icon-text: var(--gray-500);
+
+    /* Shadows - lighter for light mode */
+    --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --shadow-xl: 0 8px 24px rgba(0, 0, 0, 0.15);
+    --shadow-primary: 0 2px 12px rgba(249, 115, 22, 0.15);
+    --shadow-primary-hover: 0 4px 16px rgba(249, 115, 22, 0.2);
+    --shadow-primary-glow: 0 0 20px rgba(249, 115, 22, 0.15);
+
+    /* Selected state */
+    --color-bg-selected: rgba(0, 0, 0, 0.08);
+    --color-bg-glass: rgba(255, 255, 255, 0.7);
+
+    /* Semantic state colors */
+    --color-state-frozen-subtle: rgba(59, 130, 246, 0.1);
+    --color-state-frozen-border: rgba(59, 130, 246, 0.25);
+    --color-state-frozen-hover: rgba(59, 130, 246, 0.18);
+    --color-state-frozen-hover-border: rgba(59, 130, 246, 0.35);
+
+    --color-state-active-subtle: rgba(34, 197, 94, 0.1);
+    --color-state-active-border: rgba(34, 197, 94, 0.25);
+    --color-state-active-hover: rgba(34, 197, 94, 0.18);
+    --color-state-active-hover-border: rgba(34, 197, 94, 0.35);
+
+    --color-mode-hierarchical-subtle: rgba(139, 92, 246, 0.12);
+    --color-mode-hierarchical-hover: rgba(139, 92, 246, 0.18);
+    --color-mode-force-subtle: rgba(59, 130, 246, 0.12);
+    --color-mode-force-hover: rgba(59, 130, 246, 0.18);
+
+    /* PDF canvas - no filter needed in light mode */
+    --pdf-canvas-filter: none;
+    --pdf-canvas-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+    --pdf-page-bg: white;
+    --pdf-bg: var(--gray-100);
+
+    /* Graph background - light gray in light mode */
+    --graph-bg: var(--gray-100);
+
+    /* Tiles area - match tile backgrounds in light mode */
+    --color-bg-tiles-area: var(--gray-100);
+  }
+
+  /* High Contrast Theme */
+  [data-theme="high-contrast"] {
+    --color-text: black;
+    --color-text-secondary: black;
+    --color-text-muted: var(--gray-700);
+    --color-text-dimmed: var(--gray-600);
+    --color-text-subtle: var(--gray-600);
+
+    --color-bg: white;
+    --color-bg-secondary: white;
+    --color-bg-tertiary: white;
+    --color-bg-elevated: white;
+    --color-bg-hover: var(--gray-100);
+    --color-bg-active: var(--gray-200);
+
+    --color-border: black;
+    --color-border-subtle: var(--gray-600);
+    --color-border-muted: var(--gray-600);
+    --color-border-default: black;
+    --color-border-hover: black;
+
+    --color-button-bg: white;
+    --color-input-border: black;
+
+    --color-danger: #ff0000;
+    --color-success: #008000;
+    --color-warning: #ff8800;
+  }
+
+  /* Fallback: if no data-theme attribute, use dark (matches :root defaults) */
+  /* No media query override needed — :root already defines dark theme values */
+}

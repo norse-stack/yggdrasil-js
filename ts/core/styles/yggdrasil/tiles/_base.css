@@ -1,0 +1,247 @@
+/* =================================================================================== */
+/* YGGDRASIL LAYER SYSTEM - Spatial UI Architecture Foundation                       */
+/* Layer: ygg.tiles.base                                                              */
+/* =================================================================================== */
+
+@layer ygg.tiles.base {
+  /* ===================================================================================
+     BASE LAYER: Core Tile System
+     =================================================================================== */
+
+  .munin-layered-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    /* Ensure this creates a stacking context and contains absolute children */
+    isolation: isolate;
+
+    /* CONTAINER QUERIES: Enable size-aware styling */
+    container-type: size;
+    container-name: tile;
+  }
+
+  /* ===================================================================================
+     DEFAULT LAYER STYLES - Base styles for all layers (overlay mode)
+     These MUST come before flow-specific rules so flow can override them
+     =================================================================================== */
+
+  .munin-layer {
+    position: absolute;
+    /* LAYER POSITIONING: Use CSS custom properties for percentage-based positioning
+       Set --layer-top, --layer-bottom, --layer-left, --layer-right on the layer
+       to position overlays at specific percentages of the container.
+       Default: inset: 0 (full container coverage) */
+    top: var(--layer-top, 0);
+    right: var(--layer-right, 0);
+    bottom: var(--layer-bottom, 0);
+    left: var(--layer-left, 0);
+    /* Only set width/height if not using percentage positioning */
+    width: auto;
+    height: auto;
+    pointer-events: none; /* Default: click-through */
+    /* Ensure layers are contained within their tile */
+    contain: layout style;
+  }
+
+  .munin-layer * {
+    pointer-events: var(--munin-layer-pointer-events, auto);
+  }
+
+  /* ===================================================================================
+     FLOW MODE: Document Flow Layout (header/content/footer stacking)
+
+     When a container has flow layers, it uses CSS Grid to stack them in document order.
+     Non-flow layers (overlay, background) use absolute positioning and z-index.
+
+     Container-level flow direction (set by munin.updateFlowDirection()):
+     - data-flow-direction="y": Vertical flow (rows) - default for headers/content/footers
+     - data-flow-direction="x": Horizontal flow (columns) - for side-by-side splits
+
+     Individual layers have data-flow="y" or data-flow="x" to participate in flow.
+     =================================================================================== */
+
+  /* Flow mode container - uses CSS Grid for flow layers */
+  .munin-layered-container[data-has-flow] {
+    display: grid;
+    overflow: visible; /* Allow content to size naturally */
+  }
+
+  /* VERTICAL FLOW (default): Stack layers as rows
+     Matches: data-flow-direction="y" (explicit), "z" (legacy default), or not set */
+  .munin-layered-container[data-has-flow][data-flow-direction="y"],
+  .munin-layered-container[data-has-flow][data-flow-direction="z"],
+  .munin-layered-container[data-has-flow]:not([data-flow-direction]) {
+    /* Default: 3 rows - auto (header), 1fr (content), auto (footer) */
+    /* Can be overridden per-app via CSS custom properties */
+    grid-template-rows: var(--munin-flow-rows, auto 1fr auto);
+    grid-template-columns: 1fr;
+  }
+
+  /* HORIZONTAL FLOW: Stack layers as columns (side-by-side) */
+  .munin-layered-container[data-has-flow][data-flow-direction="x"] {
+    /* Equal width columns for each flow layer */
+    grid-template-columns: var(--munin-flow-cols, 1fr 1fr);
+    grid-template-rows: 1fr;
+  }
+
+  /* Flow layers: Participate in document flow, NOT absolute positioned */
+  .munin-layered-container[data-has-flow] > .munin-layer[data-flow="y"],
+  .munin-layered-container[data-has-flow] > .munin-layer[data-flow="x"] {
+    position: relative;
+    inset: unset;
+    width: unset;
+    height: unset;
+    /* Flow layers should be interactive by default */
+    pointer-events: auto;
+    /* Allow content to determine size */
+    min-height: 0;
+    min-width: 0;
+    /* Stack above background */
+    z-index: 1;
+  }
+
+  /* Background layer in flow containers: sits behind everything */
+  .munin-layered-container[data-has-flow] > .munin-layer-background {
+    /* Use absolute positioning to truly sit behind the grid */
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* Overlay layer in flow containers: sits above everything */
+  .munin-layered-container[data-has-flow] > .munin-layer-overlay {
+    /* Use absolute positioning to float above the grid */
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+  }
+
+  /* ===================================================================================
+     BACKGROUND LAYER: Content and Empty States
+     =================================================================================== */
+
+  .munin-layer-background {
+    container-type: size;
+    container-name: content-area;
+    /* Background content should be clickable */
+    pointer-events: auto;
+  }
+
+  /* D3 Persistent Layer: Interactive SVG Visualization */
+  .munin-layer-d3Layer {
+    z-index: 20; /* Between background (10) and controls (50) */
+    /* D3 SVG should be interactive for dragging/clicking nodes */
+    pointer-events: auto;
+  }
+
+  /* Ensure graph-viewer-container takes full space for D3GraphStrategy */
+  .munin-layer-d3Layer .graph-viewer-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  /* ===================================================================================
+     CONTROLS LAYER: HUD-Style Interactive Elements
+     =================================================================================== */
+
+  .munin-layer-controls {
+    container-type: inline-size;
+    container-name: controls-layer;
+    z-index: var(--z-controls);
+    /* HUD PATTERN: Layer itself is click-through by default */
+    pointer-events: none;
+    /* Ensure full container coverage for slide-in panels */
+    position: absolute;
+    inset: 0;
+  }
+
+  /* HUD PATTERN: Specific interactive elements can receive clicks */
+  .munin-layer-controls button,
+  .munin-layer-controls .interactive,
+  .munin-layer-controls .clickable,
+  .munin-layer-controls input,
+  .munin-layer-controls select,
+  .munin-layer-controls textarea,
+  .munin-layer-controls a,
+  .munin-layer-controls [role="button"],
+  .munin-layer-controls .control-element,
+  .munin-layer-controls .node-info-panel {
+    pointer-events: auto;
+  }
+
+  /* GraphViewerTile: Make graph controls click-through for D3 interaction */
+  .munin-layer-controls .graph-controls {
+    pointer-events: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: auto;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 8px 12px;
+    color: white;
+    font-size: 12px;
+    border-radius: 4px 4px 0 0;
+    z-index: 10;
+  }
+
+  /* Make individual control text clickable if needed */
+  .munin-layer-controls .graph-controls span {
+    pointer-events: auto;
+    cursor: default;
+  }
+
+  /* ===================================================================================
+     OVERLAY LAYER: Loading States, Modals, Notifications
+     =================================================================================== */
+
+  .munin-layer-overlay {
+    z-index: var(--z-overlay);
+    /* Default: click-through when empty, block when content is present */
+    pointer-events: none;
+    /* Ensure overlay inherits proper positioning */
+    position: absolute;
+    inset: 0;
+    contain: layout style;
+  }
+
+  /* When overlay has content, it should block interaction */
+  .munin-layer-overlay:not(:empty) {
+    pointer-events: auto;
+  }
+
+  /* Loading overlay styling */
+  .munin-layer-overlay.loading {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text);
+  }
+
+  /* Modal overlay styling */
+  .munin-layer-overlay.modal {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+  }
+
+  /* ===================================================================================
+     DEBUG LAYER: Development Information (unlayered for highest priority)
+     =================================================================================== */
+}
+
+/* Debug styles are unlayered so they always win */
+.munin-layer-debug {
+  background: rgba(255, 0, 0, 0.1);
+  border: 2px dashed red;
+  pointer-events: none;
+  z-index: 9999;
+}

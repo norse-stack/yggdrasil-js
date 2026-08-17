@@ -1,0 +1,113 @@
+/* =================================================================================== */
+/* UI STATES - Loading, empty, and error states                                        */
+/* Layer: ygg.ui.states                                                                */
+/* =================================================================================== */
+
+@layer ygg.ui.states {
+  /* =================================================================================
+     LOADING STATE
+     ================================================================================= */
+  .tile-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    padding: var(--spacing-2xl);
+    color: var(--color-text-muted);
+    font-style: italic;
+    text-align: center;
+  }
+
+  .tile-loading-spinner {
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--color-border);
+    border-top: 2px solid var(--color-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  /* =================================================================================
+     EMPTY STATE
+     ================================================================================= */
+  .tile-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-2xl);
+    text-align: center;
+    color: var(--color-text-muted);
+  }
+
+  .tile-empty h4 {
+    margin: 0;
+    color: var(--color-text);
+    font-size: 1.1em;
+    font-weight: 600;
+  }
+
+  .tile-empty p {
+    margin: 0;
+    font-size: 0.9em;
+    line-height: 1.4;
+  }
+
+  .tile-empty .btn {
+    margin-top: var(--spacing-md);
+  }
+
+  /* =================================================================================
+     ERROR STATE
+     ================================================================================= */
+  .tile-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-2xl);
+    text-align: center;
+    color: var(--color-danger);
+  }
+
+  .tile-error h4 {
+    margin: 0;
+    color: var(--color-danger);
+    font-size: 1.1em;
+    font-weight: 600;
+  }
+
+  .tile-error p {
+    margin: 0;
+    font-size: 0.9em;
+    line-height: 1.4;
+  }
+
+  /* =================================================================================
+     FOCUS BUTTON - Tile-level focus/hover helper
+     ================================================================================= */
+  .tile-focus-btn {
+    font-size: 0.8em;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: 3px;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .tile-focus-btn:hover {
+    background: var(--color-bg-tertiary);
+    border-color: var(--color-primary);
+    color: var(--color-text);
+  }
+}
