@@ -19,6 +19,10 @@ make test    # vitest unit tests
 
 The package is consumed from `ts/core` (e.g. via a `file:` dependency); its exports resolve from `dist/`, so build first.
 
+## Yggdrasil in the wild
+
+[bragi-io.com/app](https://bragi-io.com/app) — the Bragi document-parsing platform's frontend — runs on Yggdrasil: tiles, layers, the authority-split state system, and the game-loop renderer, in production.
+
 ## Documentation
 
 The docs are the primary artifact of this preview:
