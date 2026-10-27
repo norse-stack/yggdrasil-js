@@ -14,7 +14,7 @@ Yggdrasil is designed for developers who:
 - Are comfortable reasoning about state, ownership, and data flow
 - Want explicit control over their application architecture
 - Prefer understanding *why* things work over memorizing *how* to use them
-- Value simplicity and small bundle sizes (~10kb gzipped)
+- Value simplicity and small bundle sizes (~16kb minified and gzipped)
 
 If you're looking for guardrails and hand-holding, this may not be the right fit. Yggdrasil trusts you to know what you're doing.
 
@@ -174,7 +174,7 @@ Instead, we provide:
 - Small, understandable APIs
 - Trust in the developer
 
-This keeps the framework at ~10kb gzipped and makes it possible to understand the entire system. If something seems hard, you're probably fighting the conventions rather than following them.
+This keeps the framework at ~16kb minified and gzipped and makes it possible to understand the entire system. If something seems hard, you're probably fighting the conventions rather than following them.
 
 ---
 

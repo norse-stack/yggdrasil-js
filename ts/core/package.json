@@ -88,7 +88,7 @@
     "state-management",
     "yggdrasil"
   ],
-  "homepage": "https://yggdrasil-js.com",
+  "homepage": "https://github.com/norse-stack/yggdrasil-js",
   "repository": {
     "type": "git",
     "url": "https://github.com/norse-stack/yggdrasil-js"

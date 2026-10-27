@@ -17,7 +17,7 @@ Yggdrasil is a frontend framework born from a simple observation: **frontend sta
 
 **Guiding opinions** (stylistic choices):
 
-6. **Convention over configuration** — trust the developer, stay minimal (~10kb gzipped)
+6. **Convention over configuration** — trust the developer, stay minimal (~16kb minified and gzipped)
 
 The *why* behind each lives in [Design principles](docs/01-philosophy/01-design-principles.md).
 

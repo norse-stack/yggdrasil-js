@@ -27,17 +27,22 @@ npm install yggdrasil-js
 ```
 src/
 ├── munin/          # Template engine
-├── state/          # State management
-├── tiling/         # Tile orchestration
-├── layer/          # Rendering system
-├── adapters/       # Platform adapters (web, Tauri, etc.)
-├── skeleton/       # SSR support
+├── state/          # ImmediateState, EventualState, AppCoordinator
+├── tiling/         # Tile orchestration and the render loop
+├── rendering/      # Surgical DOM swap
+├── flow/           # Flow overlays
+├── hugin/          # Observation
+├── adapters/       # Platform adapters
+├── services/       # Service registration
+├── theme/          # Theme tokens
+├── dependencies/   # Dependency wiring
+├── ssr.ts          # Server-side rendering entry
 └── index.ts        # Main exports
 ```
 
 ## Philosophy
 
-See the [Design Principles](../../yggdrasil-mcp/docs/01-foundations/01-philosophy/01-design-principles.md) for the full philosophy.
+See the [Design Principles](../../docs/01-philosophy/01-design-principles.md) for the full philosophy.
 
 **TL;DR:**
 1. Frontend as Distributed Systems
@@ -48,4 +53,4 @@ See the [Design Principles](../../yggdrasil-mcp/docs/01-foundations/01-philosoph
 
 ## License
 
-MIT
+Dual-licensed under MIT or Apache-2.0, at your option. See `LICENSE-MIT` and `LICENSE-APACHE` at the repository root.
